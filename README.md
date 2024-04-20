@@ -3,7 +3,7 @@
 
 [__Лр №1. Создание простейшей программы на ассемблере. Отладчик.__](https://github.com/HanSoloCh/BMSTU_MDPL/tree/main/lab_1)<br>
 
-[__Лр №2. EXE-файлы. Сегменты. Простейший ввод-вывод средствами DOS.__](https://github.com/HanSoloCh/BMSTU_MDPL/tree/main/lab_2)br>
+[__Лр №2. EXE-файлы. Сегменты. Простейший ввод-вывод средствами DOS.__](https://github.com/HanSoloCh/BMSTU_MDPL/tree/main/lab_2)<br>
 
 [__Лр №3. Многомодульные программы.__](https://github.com/HanSoloCh/BMSTU_MDPL/tree/main/lab_3)<br>
 
