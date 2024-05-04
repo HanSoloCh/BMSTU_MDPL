@@ -6,15 +6,19 @@ const double EPS = 1e-9;
 
 double func(double x) { return 2 * std::sin(x * x - 5); }
 
-double findRoot(double start, double stop) {
+double findRoot(double start, double stop, int count) {
     double fStart = func(start), fStop = func(stop);
     double mid, fMid;
     assert(fStart * fStop <= 0);
 
-    do {
+    for (int i = 0; i < count; ++i) {
         mid = (start + stop) / 2.0;
 
         fMid = func(mid);
+
+        // Если нашли корень
+        if (fabs(fMid) < EPS)
+            return mid;
 
         if (fStart * fMid < 0) {
             stop = mid;
@@ -22,7 +26,7 @@ double findRoot(double start, double stop) {
             start = mid;
             fStart = fMid;
         }
-    } while (fabs(stop - start) > EPS);
+    }
 
     return (start + stop) / 2.0;
 }
@@ -44,9 +48,9 @@ double funcAsm(double x) {
     return res;
 }
 
-double findRootAsm(double start, double stop) {
+double findRootAsm(double start, double stop, int count) {
     const int two = 2.0;
-    do {
+    for (int i = 0; i < count; ++i) {
         double fStart = funcAsm(start), fStop = funcAsm(stop);
         double mid, fMid;
         double a_s = start, b_s = stop;
@@ -62,14 +66,16 @@ double findRootAsm(double start, double stop) {
         );
 
         fMid = funcAsm(mid);
+        if (fabs(fMid) < EPS)
+            return mid;
         __asm__(
             "fld %2\n"  // Загружаем fStart
             "fld %5\n"  // Загрузить fMid
             "fmulp\n"   // Умножаем fStart и fMid
             "fldz\n"    // Загрузить ноль
             "fcom\n"    // Сравнить результат с нулем
-            "fstsw ax\n"    // Сохранить регистр статуса FPU в AX
-            "sahf\n"    // Применить флаги условия к регистру флагов процессора
+            "fstsw ax\n"    // Загрузить маску в AX
+            "sahf\n"    // Применить маску из AX к флагам
 
             "ja greater\n"  // Если флаг C1 установлен в 0, перейти к метке greater
 
@@ -80,7 +86,7 @@ double findRootAsm(double start, double stop) {
             "fstp %0\n" // Сохранить mid в start
             "fld %5\n"  // Загрузить значение fMid
             "fstp %2\n" // Сохранить в fStart
-            "fld %7\n"  // tmp-выгруз в stop
+            "fld %7\n"
             "fstp %1\n"
             "jmp end\n" // Перейти к концу
 
@@ -91,7 +97,7 @@ double findRootAsm(double start, double stop) {
             "fstp %1\n"  // Сохранить mid в stop
             "fld %5\n"   // Загрузить значение fMid
             "fstp %3\n"  // Сохранить в fStop
-            "fld %6\n"   // tmp-выгруз в start
+            "fld %6\n"
             "fstp %0\n"
 
             "end:\n"
@@ -99,15 +105,16 @@ double findRootAsm(double start, double stop) {
             : "m"(mid), "m"(fMid), "m"(a_s), "m"(b_s)      // Входные значения (c, fc)
             : "%ax"  // Указываем, что мы используем AX
         );
-    } while (fabs(stop - start) > EPS);
+    }
     return (stop + start) / 2.0;
 }
 
 const double START = 0.;
 const double STOP = 2.;
+const int COUNT = 1;
 
 int main() {
-    std::cout << "Root by default func: " << findRoot(START, STOP) << std::endl;
-    std::cout << "Root by asm func: " << findRootAsm(START, STOP) << std::endl;
+    std::cout << "Root by default func: " << findRoot(START, STOP, COUNT) << std::endl;
+    std::cout << "Root by asm func: " << findRootAsm(START, STOP, COUNT) << std::endl;
     return 0;
 }
