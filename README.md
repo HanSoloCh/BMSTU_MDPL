@@ -15,7 +15,7 @@
 
 [__Лр №7__](https://github.com/HanSoloCh/BMSTU_MDPL/tree/main/lab_7) - Программирование для процессоров x86/x86-64. Обработка строк.<br>
 
-[__Лр №8__](https://github.com/HanSoloCh/BMSTU_MDPL/tree/main/lab_8) - Программирование для процессоров x86/x86-64. Обработка строк.<br>
+[__Лр №8__](https://github.com/HanSoloCh/BMSTU_MDPL/tree/main/lab_8) - Математический сопроцессор.<br>
 
 *Совет*: для наибольшего удобства пользования DOSBOX на Linux настройте параметры автозапуска: в файле `~/.dosbox/dosbox-0.74-3.conf`, в конце, необходимо указать несколько команд:
 - `mount c <адрес до монтируемой папки>`
