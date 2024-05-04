@@ -101,17 +101,17 @@ double findRootAsm(double start, double stop, int count) {
             "fstp %0\n"
 
             "end:\n"
-            : "=m"(start), "=m"(stop), "=m"(fStart), "=m"(fStop)  // Выходные значения (a и b)
-            : "m"(mid), "m"(fMid), "m"(a_s), "m"(b_s)      // Входные значения (c, fc)
+            : "=m"(start), "=m"(stop), "=m"(fStart), "=m"(fStop)
+            : "m"(mid), "m"(fMid), "m"(a_s), "m"(b_s)
             : "%ax"  // Указываем, что мы используем AX
         );
     }
     return (stop + start) / 2.0;
 }
 
-const double START = 0.;
-const double STOP = 2.;
-const int COUNT = 1;
+const double START = 1.;
+const double STOP = 1.5;
+const int COUNT = 10;
 
 int main() {
     std::cout << "Root by default func: " << findRoot(START, STOP, COUNT) << std::endl;

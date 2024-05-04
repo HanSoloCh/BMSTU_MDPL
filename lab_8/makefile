@@ -1,5 +1,5 @@
 CC := g++
-FLAGS := -mno-80387 -masm=intel -no-pie
+FLAGS := -m80387 -masm=intel -no-pie
 
 all: task_1.exe task_2.exe
 

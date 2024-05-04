@@ -1,6 +1,7 @@
 #include <math.h>
 
 #include <iostream>
+#include <iomanip>
 
 double getAsmPi() {
     double pi;
@@ -27,31 +28,39 @@ const double B_PI = 3.141596;
 const double ASM_PI = getAsmPi();
 
 void measureDefaultSin() {
-    std::cout << "Compile version of sin(PI) (should be 0):\n";
-    std::cout << "For " << PI << " res - " << std::sin(PI) << std::endl;
-    std::cout << "For " << B_PI << " res - " << std::sin(B_PI) << std::endl;
-    std::cout << "For " << ASM_PI << " res - " << std::sin(ASM_PI) << std::endl;
-    std::cout << "Compile version of sin(PI / 2) (should be 1):\n";
-    std::cout << "For " << PI / 2 << " res - " << std::sin(PI / 2) << std::endl;
-    std::cout << "For " << B_PI / 2 << " res - " << std::sin(B_PI / 2) << std::endl;
-    std::cout << "For " << ASM_PI / 2 << " res - " << std::sin(ASM_PI / 2) << std::endl;
+    std::cout << std::setprecision(20);
+    std::cout << "| Compile version of sin(PI) (should be 0) |\n";
+    std::cout << "|------------------------------------------|\n";
+    std::cout << "| 3.14     | " << std::sin(PI) << "      |\n";
+    std::cout << "| 3.141596 | " << std::sin(B_PI) << "    |\n";
+    std::cout << "| ASM PI   | " << std::sin(ASM_PI) << "     |\n" << std::endl;
+    std::cout << "| Compile version of sin(PI / 2) (should be 1) |\n";
+    std::cout << "|----------------------------------------------|\n";
+    std::cout << "| 3.14 / 2     | " << std::sin(PI / 2) << "        |\n";
+    std::cout << "| 3.141596 / 2 | " << std::sin(B_PI / 2) << "        |\n";
+    std::cout << "| ASM PI / 2   | " << std::sin(ASM_PI / 2) << "                             |\n";
     std::cout << std::endl;
+    std::cout << std::defaultfloat;
 }
 
 void measureAsmSin() {
-    std::cout << "Preproc version of sin(PI) (should be 0):\n";
-    std::cout << "For " << PI << " res - " << asmSin(PI) << std::endl;
-    std::cout << "For " << B_PI << " res - " << asmSin(B_PI) << std::endl;
-    std::cout << "For " << ASM_PI << " res - " << asmSin(ASM_PI) << std::endl;
-    std::cout << "Preproc version of sin(PI / 2) (should be 1):\n";
-    std::cout << "For " << PI / 2 << " res - " << asmSin(PI / 2) << std::endl;
-    std::cout << "For " << B_PI / 2 << " res - " << asmSin(B_PI / 2) << std::endl;
-    std::cout << "For " << ASM_PI / 2 << " res - " << asmSin(ASM_PI / 2) << std::endl;
+    std::cout << std::setprecision(20);
+    std::cout << "| Preproc version of sin(PI) (should be 0) |\n";
+    std::cout << "|------------------------------------------|\n";
+    std::cout << "| 3.14     | " << asmSin(PI) << "      |\n";
+    std::cout << "| 3.141596 | " << asmSin(B_PI) << "    |\n";
+    std::cout << "| ASM PI   | " << asmSin(ASM_PI) << "     |\n" << std::endl;
+    std::cout << "| Preproc version of sin(PI / 2) (should be 1) |\n";
+    std::cout << "|----------------------------------------------|\n";
+    std::cout << "| 3.14 / 2     | " << asmSin(PI / 2) << "        |\n";
+    std::cout << "| 3.141596 / 2 | " << asmSin(B_PI / 2) << "        |\n";
+    std::cout << "| ASM PI / 2   | " << asmSin(ASM_PI / 2) << "                             |\n";
     std::cout << std::endl;
+    std::cout << std::defaultfloat;
 }
 
 int main() {
     measureDefaultSin();
-    measureDefaultSin();
+    measureAsmSin();
     return 0;
 }

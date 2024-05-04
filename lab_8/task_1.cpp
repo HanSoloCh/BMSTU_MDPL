@@ -60,7 +60,7 @@ clock_t timeMeasureMulASM(T a, T b) {
 template <typename T>
 void measureExperiment(size_t count = 1000) {
     clock_t sumTime = 0.0, mulTime = 0.0, sumTimeASM = 0.0, mulTimeASM = 0.0;
-    T first = 12.2, second = 3.125;
+    T first = 2627.3672, second = 8210.3417;
     for (size_t i = 0; i < count; ++i) {
         sumTime += timeMeasureSum(first, second);
         mulTime += timeMeasureMul(first, second);
