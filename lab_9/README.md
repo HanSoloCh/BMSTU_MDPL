@@ -12,4 +12,4 @@
 
 ---
 
-Отдельная благодарность за помощь [@DeadCool23](https://github.com/DeadCool23)
+#### Вдохновлено [@DeadCool23](https://github.com/DeadCool23)
