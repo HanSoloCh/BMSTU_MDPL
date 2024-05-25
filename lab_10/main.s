@@ -46,7 +46,7 @@ extern exit
 section .data
     result_text_buffer          db ENTRY_SIZE dup (0)
     ; tmp_buf db 1024
-    title                       db "y = sin(x^2 - 5)", 0
+    title                       db "y = 2sin(x^2 - 5)", 0
     solve_button_title          db "Find root", 0
 
     start_x_placeholder_text    db "Enter a", 0

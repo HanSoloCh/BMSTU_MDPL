@@ -33,7 +33,7 @@ double findRoot(double start, double stop, int count) {
 
 double funcAsm(double x) {
     double res;
-    const int addNum = 5;
+    const int addNum = 5, mulNum = 2;
     __asm__(
         "fld %1\n"  // Загружаем значение x
         "fld %1\n"  // Загружаем значение x
@@ -41,9 +41,11 @@ double funcAsm(double x) {
         "fild %2\n" // Загружаем 5
         "fsubp\n"   // x^2 - 5
         "fsin\n"    // sin(x^2 - 5)
+        "fild %3\n" // Загружаем 2
+        "fmulp\n"   // 2sin(x^2 - 5)
         "fstp %0\n" // Сохраняем результат в переменную res
         : "=m"(res) // Выходной параметр
-        : "m"(x), "m"(addNum)   // Входные параметры
+        : "m"(x), "m"(addNum), "m"(mulNum)   // Входные параметры
     );
     return res;
 }

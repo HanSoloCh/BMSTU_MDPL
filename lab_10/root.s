@@ -10,6 +10,7 @@ section .data
     x dq 0
     answer dq 0
     adder dq 5
+    mulper dq 2
     tmp_a dq 0
     tmp_b dq 0
 
@@ -76,6 +77,8 @@ func:
     fild qword [adder]
     fsubp ; x ^ 2 - 5
     fsin ; sin(x^2 - 5)
+    fild qword [mulper]
+    fmulp ; 2sin(x^2 - 5)
     ret
 get_root:
 
