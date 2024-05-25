@@ -17,6 +17,9 @@
 
 [__Лр №8__](https://github.com/HanSoloCh/BMSTU_MDPL/tree/main/lab_8) - Математический сопроцессор.<br>
 
+[__Лр №9__](https://github.com/HanSoloCh/BMSTU_MDPL/tree/main/lab_9) - .<br>
+
+[__Лр №10__](https://github.com/HanSoloCh/BMSTU_MDPL/tree/main/lab_10) - .<br>
 *Совет*: для наибольшего удобства пользования DOSBOX на Linux настройте параметры автозапуска: в файле `~/.dosbox/dosbox-0.74-3.conf`, в конце, необходимо указать несколько команд:
 - `mount c <адрес до монтируемой папки>`
 - `PATH=%PATH%;c:\<адрес до папки с программами относительно монтируемой папки>`
