@@ -33,7 +33,7 @@ int main() {
 	int a[] = { 1, 2, 3 };
 	int b[] = { 3, 2, 1 };
 	int res[3];
-	neon_add(a, b, res, 3);
+	neon_sub(a, b, res, 3);
 	for (int i = 0; i < 3; ++i) {
 		std::cout << res[i] << " ";
 	}

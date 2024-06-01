@@ -1,4 +1,4 @@
-all: task_1.exe, task_2.exe
+all: task_1.exe task_2.exe
 	
 
 task_1.exe: task_1.cpp
